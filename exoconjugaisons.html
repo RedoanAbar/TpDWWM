@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>conjugaison</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+        var nbverbe = prompt("saisir nb");
+        var tab = [];
+        var PP = ["je " ,"tu " ,"il/elle ","nous ","vous ","ils/elles "];
+        var groupe1 = ["e","es","e","ons","ez","ent"];
+        var groupe2 = ["is","is","it","issons","issez","issent"];
+        var indice = Math.floor(Math.random() * nbverbe);
+        var groupe = [] ;
+        
+        for (var i = 0; i < nbverbe; i++) {
+         tab[i] = prompt("saisir les verbes 1er ou 2nd groupe");
+        }
+		
+		var couper1 = tab[indice].substring(0,tab[indice].length-2);
+		 var couper2 = tab[indice].substr(-2);
+		//var groupe1 = ["je"+couper+"e","tu"+couper+"es","il/elle"+couper+"e","nous"+couper+"ons","vous"+couper+"ez","ils/elles"+couper+"ent"];
+		//var groupe2 = ["je"+couper+"is","tu"+couper+"is","il/elle"+couper+"it","nous"+couper+"issons","vous"+couper+"issez","ils/elles"+couper+"issent"];
+		//var couper1 =	tab[indice].slice(tab[indice].length-20,tab[indice].length-2);
+        //var couper2 = tab[indice].slice(tab[indice].length-2,tab[indice].length);
+		
+		if (couper2 == "er") {
+	         groupe = groupe1;
+		}
+		else if (couper2 == "ir") {
+		    groupe = groupe2;
+		}
+		else  {
+            alert("ce verbe n'est pas du 1er n'y du 2nd groupe");
+        }
+
+		for (var e = 0; e < 6; e++) {
+				document.write(PP[e]+couper1+groupe[e]+"<br>");
+			}
+
+		
+	</script>
+
+</body>
+</html>

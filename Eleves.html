@@ -1,0 +1,86 @@
+<html>
+	<head>
+		<title>Exercice 2 : tableau d'élèves</title>
+	</head>
+	<body>
+		<script>
+			//Déclaration de l'objet
+			var Eleve=
+			{
+				Nom:"",
+				Prenom:"",
+				Age:0,
+				Notes:[],
+
+				//Retourne la moyenne de l'élève
+				CalculerMoyenne : function()
+				{
+					var i=0, Result=0;
+					for(i=0;i<this.Notes.length;i++)
+					{
+						Result = Number(this.Notes[i])+Number(Result);
+					}
+					return (Result/this.Notes.length).toFixed(2); //arrondir à 2 chiffres après la virgule
+				},
+				//Retourne la note max de l'élève
+				MaxNote : function()
+				{
+					var Result=0;
+					Result = Math.max.apply(null,this.Notes);
+					return Result;
+				},
+				//Permet d'initialiser les attributs de l'élève
+				SetInfos : function(N,P,A,Nt)
+				{
+					this.Nom = N;
+					this.Prenom = P;
+					this.Age = A;
+					this.Notes = Nt;
+				},
+				// Retourne les nom, prénom sous forme de chaine
+				GetInfos : function()
+				{
+					return (this.Nom + " " + this.Prenom);
+				}
+			}
+
+			//Programme principal
+			var n="",p="";
+			var i=0,j=0,a=0;
+		    var nt = [],TabEl = [];
+		    var nbel=0,nbnote=0;
+
+		    //complétion du tableau d'élèves
+		    nbel = prompt("Combien d'élèves?");
+		    for(i=0;i<nbel;i++)
+		    {
+		    	/*création d'un objet à chaque itération 
+		    	pour le stocker dans le tableau d'élèves*/
+		    	var El1 = Object.create(Eleve); 
+		    	n = prompt("Nom");
+		    	p = prompt("Prenom");
+		    	a = prompt("Age");
+		    	nbnote = prompt("Nb notes");
+		    	for(j=0;j<nbnote;j++)
+		    	{
+		    		nt[j]=prompt("Note");
+		    	}
+		    	El1.SetInfos(n,p,a,nt);
+		    	TabEl.push(El1);
+		    	nt = []; // remise à zéro du tableau de notes.
+		    }
+		    
+		    //Affichage du résultat
+			for(i=0;i<TabEl.length;i++)
+			{
+				document.write("<b>Elève : ",TabEl[i].GetInfos(),"</b>");
+				Moy = TabEl[i].CalculerMoyenne();
+				document.write("<br>Moyenne : ",Moy);
+				NoteMax = TabEl[i].MaxNote();
+				document.write("<br>Meilleure note : ",NoteMax,"<br><br>");
+			}
+
+			
+		</script>
+	</body>
+</html>

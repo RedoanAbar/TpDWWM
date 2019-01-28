@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		var d = new Date();
+		var y;
+		var m = ["janvier"];
+		var j = [0];
+		document.write("date du jour : ",d);
+		y = d.getFullYear();
+		document.write("<br>Année : ",y);
+		m = d.getMonth();
+		document.write("<br>mois : ",m);
+		j = d.getDay();
+		document.write("<br>jour : ",j);
+        //newDate.setHours(newDate.getHours()+3);
+		
+
+        
+        var saisie = prompt("saisir une date( heure minute )");
+        saisie = saisie.split("/");
+        var ndate = new Date(Number(saisie[2]),Number(saisie[1]-1),Number(saisie[0]),Number(saisie[3]),Number(saisie[4]));
+        var result = ndate - d ;
+          
+        function diff(ms) {  
+        
+        days = Math.floor(ms/ (24*60*60*1000));
+        daysresult = result % (24*60*60*1000);
+        hours = Math.floor((daysresult)/(60*60*1000));
+        hoursresult = result % (60*60*1000);
+        minutes = Math.floor((hoursresult)/(60*1000));
+        minutesresult = result % (60*1000);
+        sec = Math.floor((minutesresult)/(1000));
+
+        return days + " jours " + hours + " heures " + minutes + " minutes " + " et " + sec + " secondes";
+        }
+
+        document.write("il y a une différence de " + diff(result) + " entre aujourd'hui et le " + ndate.toLocaleDateString() + " à " + saisie[3] + "h" + saisie[4]+ "m.");
+
+        
+
+        //var now = d.getDay()+'/'+d.getMonth()+'/'+d.getFullYear()+' '+d.getHours()+':'+d.getMinutes(); 
+        //var result = now - ndate1 ;
+        //alert(result);
+
+       /* var dDate = new Date();
+        var dNeoDate = new Date(dDate);
+        dNeoDate.setHours(dNeoDate.getHours()+3);
+        alert(dDate.getHours()+\n+dNeoDate.getHours());*/
+
+	</script>
+
+</body>
+</html>
